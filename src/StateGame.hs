@@ -33,6 +33,6 @@ playGame (x:xs) = do
 
 startState = (False, 0)
 
-main = do
+playSG = do
     input <- getLine
     print $ evalState (playGame input) startState
