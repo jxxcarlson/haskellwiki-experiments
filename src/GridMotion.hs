@@ -11,6 +11,9 @@ applyFirst f (P x y) = P (f x) y
 applySecond :: (Int -> Int) -> Position -> Position
 applySecond f (P x y) = P x (f y)
 
+distance :: Position -> Position -> Int
+distance (P x y) (P x' y') = abs (x - x') + abs (y - y')
+
 play :: String -> State Position Position
 play []     = do
     get
