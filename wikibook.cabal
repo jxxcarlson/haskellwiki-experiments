@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b08c3ab61457948ffc1bb8460c24c353d70725c258aa6278fc1a47e15958a93d
+-- hash: ce6c5a06b1cd330689c999cd068923f87eb5175a354f561c924eeab474f502f0
 
 name:           wikibook
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      GridMotion
       Lib
       Stack
       State2

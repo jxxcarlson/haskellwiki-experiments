@@ -19,9 +19,13 @@ push_ x xs = ((), (x:xs))
 
 
 -- MONADIC PUSH AND POP
-pop = ST pop_
-push x = ST (push_ x)
--- push k = ST  (\s -> ((), k:s))
+-- pop = ST (\s -> let (x:xs) = s  
+--                 in (x, xs))
+
+
+pop = ST (\(x:xs) -> (x, xs))
+                
+push k = ST  (\s -> ((), k:s))
 
 
 -- > app foo []
