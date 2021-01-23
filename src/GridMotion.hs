@@ -1,7 +1,7 @@
 module GridMotion where
 
 import Control.Monad.State
-    ( MonadState(put, get), evalState, State )   
+    --( MonadState(put, get), evalState, State )   
 
 data Position = P Int Int deriving Show
 
@@ -14,7 +14,6 @@ applySecond f (P x y) = P x (f y)
 play :: String -> State Position Position
 play []     = do
     get
-
 
 play (x:xs) = do
     pos <- get
