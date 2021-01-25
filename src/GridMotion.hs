@@ -25,10 +25,6 @@ data GameState  = GameState {current :: Position, goal :: Position} deriving Sho
 
 play :: String -> State GameState GameState
 play []     = do get
-    -- gs <- get
-    -- putStrLn $ show distance (current gs) (goal gs)
-    --return (current gs)
-    -- return gs
 
 play (x:xs) = do
     gs <- get
