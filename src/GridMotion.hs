@@ -31,5 +31,10 @@ play (x:xs) = do
 startState = P 0 0
 
 playGM = do
+    putStrLn "Enter final position, x:"
+    xStr <- getLine 
+    putStrLn "Enter final position, x:"
+    xStr <- getLine 
+    putStrLn "Enter directions, e.g., nnwwwwn"
     input <- getLine
     print $ evalState (play input) startState
