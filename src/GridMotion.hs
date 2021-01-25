@@ -20,12 +20,15 @@ applyYGS f gs = gs { current = applyY f (current gs)}
 distance :: Position -> Position -> Int
 distance (P x y) (P x' y') = abs (x - x') + abs (y - y')
 
-data GameState  = GameState {current :: Position, goal :: Position}
+data GameState  = GameState {current :: Position, goal :: Position} deriving Show
 
-play :: String -> State GameState Position
-play []     = do
-    gs <- get
-    return (current gs)
+
+play :: String -> State GameState GameState
+play []     = do get
+    -- gs <- get
+    -- putStrLn $ show distance (current gs) (goal gs)
+    --return (current gs)
+    -- return gs
 
 play (x:xs) = do
     gs <- get
@@ -43,9 +46,17 @@ startState x y = GameState {current = P 0 0, goal = P x y}
 playGM = do
     putStrLn "Enter final position, x:"
     xStr<- getLine 
-    putStrLn "Enter final position, x:"
+    putStrLn "Enter final position, y:"
     yStr <- getLine 
     putStrLn "Enter directions, e.g., nnwwwwn"
     input <- getLine
-    print $ evalState (play input) (startState (read xStr :: Int)  (read yStr :: Int))
-    -- print $ evalState (play input) (startState 5  7)
+    putStrLn $ formatValue $ evaluateGame $ evalState (play input) (startState (read xStr :: Int)  (read yStr :: Int))
+
+evaluateGame :: GameState -> Int
+evaluateGame gs = distance (current gs) (goal gs)
+
+formatValue :: Int -> String 
+formatValue k =
+    if k == 0 then
+        "Success!"
+    else "Distance to goal = " ++ show k
